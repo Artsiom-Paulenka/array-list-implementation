@@ -8,7 +8,8 @@ public class ArrayListImplementation {
 
         this.array = new int[capacity];
     }
-//Создали метод add
+
+    //Создали метод add
     public void add(int element) {
         //Если длина массива равна длине последнему индексу в массиве значит массив заполнен
         //Используем метод grow
@@ -20,6 +21,7 @@ public class ArrayListImplementation {
         array[size] = element;
         size++;
     }
+
     //Создаем
     private void grow() {
         //Создаем новую переменную с размером  в 2 раза больше длины старого массива
@@ -35,5 +37,44 @@ public class ArrayListImplementation {
         //Теперь ссылка на какой-то массив это новый массив
         array = newArray;
     }
+
+    //////ДОМАШКА///////
+    public int size() {
+        return size;
+
+    }
+
+    public void printInScreen() {
+        String arrayList = "[";
+
+        for (int i = 0; i < size; i++) {
+            arrayList += array[i];
+        }
+        arrayList += "]";
+    }
+
+    public void remove(int index) {
+
+        for (int i = index; i < size; i++) {
+            array[i] = array[i + 1];
+        }
+        array[size - 1] = 0;
+        size--;
+    }
+
+    public void addAdd(int index, int element) {
+
+        if (array.length == size) {
+            grow();
+        }
+
+        for (int i = size - 1; i >= index; i--) {
+            array[i + 1] = array[i];
+        }
+
+        array[index] = element;
+        size++;
+    }
 }
+
 
